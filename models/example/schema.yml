@@ -2,20 +2,19 @@
 version: 2
 
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
+    - name: macro_calling
+      description: "clkling the macro_calling.sql model"
       columns:
-          - name: id
+          - name: ORDER_ID
             description: "The primary key for this table"
             tests:
                 - unique
                 - not_null
+          
+          - name: ORDER_STATUS
+            description: "The Status column should hold only these ['PENDING', 'SHIPPED', 'DELIVERED', 'CANCELLED']"
+            tests:
+                - accepted_values:
+                   arguments: 
+                    values: ['PENDING', 'SHIPPED', 'DELIVERED', 'CANCELLED']
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
