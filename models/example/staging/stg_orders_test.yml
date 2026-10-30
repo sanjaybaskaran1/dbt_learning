@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_orders
+    columns:
+      - name: O_ID
+        data_tests:
+          - unique
+          - not_null
+
+      - name: ORDER_STATUS
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['PENDING', 'SHIPPED', 'DELIVERED', 'CANCELLED']
